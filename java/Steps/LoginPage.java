@@ -29,15 +29,21 @@ public class LoginPage extends CommonMethods {
 
     }
     @Then("User is successfully logged in to the application")
-    public void user_is_successfully_logged_in_to_the_application() throws InterruptedException {
-      /*  WebElement  dashboardTitle=CommonMethods.waitForElementToBeVisible(driver, By.xpath("//h1[normalize-space()='Dashboard']"));
-       // Assert the dashboard title
-        String expectedTitle = "Dashboard";
-        String actualTitle = dashboardTitle.getText();
-        Assert.assertEquals(expectedTitle, actualTitle);
-        System.out.println(actualTitle);*/
-        Thread.sleep(2000);
+    public void user_is_successfully_logged_in_to_the_application()  {
         CommonMethods.assertElementText(driver,By.xpath("//h1[normalize-space()='Dashboard']"),"Dashboard");
         CommonMethods.closeBrowser();
     }
+
+    @When("User enters invalid {string} address and a invalid {string}")
+    public void user_enters_invalid_address_and_a_invalid(String email, String password) {
+       sendText(email, loginPage.username);
+       sendText(password,loginPage.password);
+    }
+    @Then("{string} message is displayed")
+    public void message_is_displayed(String error) {
+        CommonMethods.assertElementText(driver,By.xpath("//div[@id='js-notification-box-msg']"),
+                "Your email, password, IP address or location did not match");
+        CommonMethods.closeBrowser();
+    }
+
 }
