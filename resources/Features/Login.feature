@@ -9,8 +9,9 @@ Feature: login scenario
     Then User is successfully logged in to the application
 
 
-     @invalidUser
-    Scenario Outline:
+
+  @invalidUser
+     Scenario Outline:
       Given User is navigating to VWO website
       When User enters invalid "<email>" address and a invalid "<password>"
       And User clicks on Sign in button

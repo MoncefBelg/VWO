@@ -3,6 +3,10 @@ package Runners;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 
 @RunWith(Cucumber.class)
@@ -14,7 +18,7 @@ import org.junit.runner.RunWith;
               glue = "Steps",
               //when dry run is true, it stops actual execution, it quickly scans all the steps and will
               //provide the missing step definition
-              tags = "@invalidUser",
+              tags = "@filter",
               dryRun =false,
               //it means sometimes the console output for cucumber test is having some
               //irrelevant information, when you set it to true, it removes all that
@@ -33,4 +37,7 @@ import org.junit.runner.RunWith;
 
 
 public class RunnerClass{
-}
+
+
+    }
+
